@@ -1,0 +1,26 @@
+<div class="container-fluid">
+<h1 class="text-center">{{dataItem.toUpperCase()}}</h1>
+    <div class="text-right">
+        <a *ngIf="dataItem!='user'" class="text-right btn" (click)="goBack()"><b>back</b></a>
+    </div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th  class="text-center"*ngFor="let attribute of attributes"> {{attribute}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let property of  (dataItem=='photo' ? sliceResponse(route.snapshot.data[dataItem]) : route.snapshot.data[dataItem])">
+            <td *ngFor="let attribute of attributes" [routerLink]="dataItem=='photo' ? null : [path + property.id + nextPath]" class="text-center">
+                <span *ngIf="attribute!='url';else photos">
+                    {{type(property[attribute]) == 'object' ? join(property[attribute]) : property[attribute]}}
+                </span>
+                <ng-template #photos>
+                    <img [src]="property[attribute]"/>
+                </ng-template>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+</div>
