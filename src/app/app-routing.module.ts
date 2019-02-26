@@ -28,6 +28,10 @@ const routes: Routes = [
         path: 'album',
         component: AlbumComponent,
         resolve: {'album': AlbumResolver}
+    },{
+        path: '',
+        component: UserComponent,
+        resolve: {'user': UserResolver}
     }
 
 ];

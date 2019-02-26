@@ -26,10 +26,5 @@ export class UserComponent extends Utilities implements OnInit {
         this.attributes = this.keys(this.removeColumns(this.route.snapshot.data)[0]);
     }
 
-    navigateTo() {
-        this.router.navigate(['/user/'+obj.id+'/album/']);
-    }
-
-
 
 }
